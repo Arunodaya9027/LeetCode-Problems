@@ -15,4 +15,4 @@ class Solution:
             sums += maps[s[-1]]
         return sums
         
- //Python
+#Python
