@@ -1,0 +1,19 @@
+class Solution {
+    public int[] numberOfLines(int[] widths, String s) {
+        int line = 1;
+        int counter = 0;
+        int n = s.length();
+        for(int i=0; i<n; i++){
+            int det = (int)s.charAt(i);
+            if(counter + widths[det - 97] > 100) {
+                counter = widths[det - 97];
+                line ++;
+            } else
+                counter += widths[det - 97];
+        }
+        int[] res = new int[2];
+        res[0] = line;
+        res[1] = counter;
+        return res;
+    }
+}
