@@ -1,0 +1,17 @@
+class Solution {
+    public int maximumValue(String[] strs) {
+        int res = 0;
+        for(int i=0; i<strs.length; i++){
+            int temp;
+            try{
+                temp = Integer.parseInt(strs[i]);
+            } catch(Exception e) {
+                temp = strs[i].length();
+            }
+            
+            if(res < temp)
+                res = temp;
+        }
+        return res;
+    }
+}
