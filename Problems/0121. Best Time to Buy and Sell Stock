@@ -1,0 +1,41 @@
+APPROACH ! -->
+
+
+
+class Solution {
+    public int maxProfit(int[] prices) {
+        
+        int len = prices.length, min = prices[0], get = 0, profit = 0;
+        for(int i=1; i<len; i++) {
+            if(min > prices[i]) 
+                min = prices[i];
+            else {
+                get = prices[i] - min;
+                if(profit < get)
+                    profit = get;
+            }
+        }
+        
+        return profit;
+    }
+}
+
+
+
+
+APPROACH 2 -->
+
+
+
+class Solution {
+    public int maxProfit(int[] prices) {
+        
+        int min = prices[0], profit = 0;
+        for(int i: prices) {
+            min = Math.min(min, i);
+            profit = Math.max(profit, i-min);
+        }
+        
+        return profit;
+    }
+}
