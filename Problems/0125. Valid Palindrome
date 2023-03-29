@@ -1,0 +1,27 @@
+class Solution {
+    public boolean isPalindrome(String s) {
+        char[] str = s.toCharArray();
+        String ans = "";
+        for(char i: str) {
+            String alnum = ""+i;
+            if ((int)i >= 65 && (int)i <= 90 ) {
+                char temp = (char)((int)i + 32);
+                ans += temp;
+            } else if ((int)i >= 97 && (int)i <= 122 ) {
+                ans += i;
+            } else if ((int)i >= 48 && (int)i <= 57) {
+                ans += i;
+            }
+        }
+
+        int len = ans.length();
+        int mid = len / 2;
+        for(int j=0; j<mid; j++) {
+            if(ans.charAt(j) != ans.charAt(len-j-1)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
