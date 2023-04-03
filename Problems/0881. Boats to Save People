@@ -1,0 +1,67 @@
+class Solution {
+    public int numRescueBoats(int[] people, int limit) {
+        
+        // Code Here ..
+        /*
+        int count = 0;
+        int temp = 0;
+        int k = 0;
+        int r = 0;
+        for(int i=people.length - 1; i>=k; i--) {
+            if(people[i] == 0 && i == people.length - 1)
+                break;
+            
+            if(i == people.length - 1) {
+                temp = limit - people[i];
+                people[i] = 0;
+                if(temp == 0) {
+                    count++;
+                    Arrays.sort(people);
+                    k = k + 1;
+                    i = people.length;
+                    temp = 0;
+                } else if(temp >0 && k == people.length - 1) {
+                    count++;
+                    break;
+                } else {
+                    r = 1;
+                }
+                
+            } else {
+                if(people[i] <= temp) {
+                    people[i] = 0;
+                    count++;
+                    Arrays.sort(people);
+                    k = k + 1 + r;
+                    i = people.length;
+                    temp = 0;
+                    r = 0;
+                } else if(people[k] > temp) {
+                    count++;
+                    Arrays.sort(people);
+                    k = k + 1;
+                    i = people.length;
+                    temp = 0;
+                    r = 0;
+                }
+            }
+        }
+
+        return count;*/
+
+        Arrays.sort(people);     // O(nlogn)
+        int i = 0, j = people.length - 1;
+        int ans = 0;
+
+        while (i <= j) {
+            ans++;
+            if (people[i] + people[j] <= limit) {
+                i++;
+            }
+            j--;
+        }
+
+        return ans;
+
+    }
+}
