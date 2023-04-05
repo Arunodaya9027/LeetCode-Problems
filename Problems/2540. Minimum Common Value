@@ -1,0 +1,13 @@
+class Solution {
+    public int getCommon(int[] nums1, int[] nums2) {
+        
+        // Code Here ..
+        Arrays.sort(nums1);
+        for(int i: nums1) {
+            if(Arrays.binarySearch(nums2, i) >= 0)
+                return i;
+        }
+
+        return -1;
+    }
+}
