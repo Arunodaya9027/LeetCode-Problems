@@ -1,0 +1,25 @@
+class Solution {
+    public int minNumber(int[] nums1, int[] nums2) {
+        
+        // Code here ..
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
+        
+        int ans = 0;
+        if(nums1[0] < nums2[0])
+            ans = nums1[0] * 10 + nums2[0];
+        else
+        ans = nums2[0] * 10 + nums1[0];
+
+        for(int i:nums1) {
+            if(Arrays.binarySearch(nums2, i) >= 0) {
+                if(i < ans){
+                    ans = i;
+                    break;
+                }
+            }
+        }
+        
+        return ans;
+    }
+}
