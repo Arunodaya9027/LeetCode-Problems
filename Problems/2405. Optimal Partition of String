@@ -1,0 +1,18 @@
+class Solution {
+    public int partitionString(String s) {
+        
+        // Code Here ..
+        Set<Character> ss = new HashSet<Character>();
+        int count = 1;
+        for (char ch : s.toCharArray()) {
+            if (ss.contains(ch)) {
+                count++;
+                ss.clear();
+            }
+
+            ss.add(ch);
+        }
+
+        return count;
+    }
+}
