@@ -1,0 +1,22 @@
+class Solution {
+    public List<Boolean> prefixesDivBy5(int[] nums) {
+        
+        // Code Here ..
+
+        List<Boolean> ans = new ArrayList<Boolean>();
+        
+        int len = nums.length;
+        int curr = 0;
+
+        for (int i=0; i<len; i++) {
+            curr = (curr * 2 + nums[i]) % 5;
+
+            if(curr % 5 == 0)
+                ans.add(true);
+            else
+                ans.add(false);
+        }
+
+        return ans;
+    }
+}
