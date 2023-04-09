@@ -1,0 +1,34 @@
+class Solution {
+    public int alternateDigitSum(int n) {
+        
+        //Code Here ..
+        int ans = 0;
+        int sef = n;
+        int count = 0;
+
+        while(sef > 0) {
+            count++;
+            sef /= 10;
+        }
+
+        int[] arr = new int[count];
+        int i = count-1;
+
+        while(n > 0) {
+            int temp = n % 10;
+            arr[i] = temp;
+            i--;
+            n /= 10;
+        }
+
+        for(i=0; i<count; i++) {
+            if(i % 2 == 0) {
+                ans += arr[i];
+            } else {
+                ans -= arr[i];
+            }
+        }
+        
+        return ans;
+    }
+}
