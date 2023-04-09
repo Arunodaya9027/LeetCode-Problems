@@ -1,0 +1,31 @@
+class Solution {
+    public boolean lemonadeChange(int[] bills) {
+        
+        // Code Here ..
+        int[] change = new int[]{0, 0, 0};
+        int len = bills.length;
+
+        for(int i=0; i<len; i++) {
+            if(bills[i] == 5){
+                change[0]++;
+            } else if(bills[i] == 10) {
+                change[1]++;
+                change[0]--;
+            } else if(bills[i] == 20) {
+                change[2]++;
+                if(change[1] > 0){
+                    change[1]--;
+                    change[0]--;
+                } else {
+                    change[0] -= 3;
+                }
+                
+            }
+
+            if(change[0] < 0 || change[1] < 0 || change[2] < 0)
+                return false;
+        }
+
+        return true;
+    }
+}
