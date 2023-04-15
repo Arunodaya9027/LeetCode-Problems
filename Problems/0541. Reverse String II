@@ -1,0 +1,22 @@
+class Solution {
+    public String reverseStr(String s, int k) {
+
+        // Code Here ..
+
+        StringBuilder ans = new StringBuilder(s);
+
+        for (int i = 0; i < ans.length(); i += 2 * k) {
+
+            int left = i;
+            int right = Math.min(i + k - 1, ans.length() - 1);
+            while (left < right) {
+                ans.setCharAt(left, s.charAt(right));
+                ans.setCharAt(right, s.charAt(left));
+                ++left;
+                --right;
+            }
+        }
+
+        return ans.toString();
+    }
+}
