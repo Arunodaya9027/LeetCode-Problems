@@ -1,0 +1,20 @@
+class Solution {
+    public boolean rotateString(String s, String goal) {
+        if(s.length() != goal.length())
+            return false;
+        else if(s == goal)
+            return true;
+
+        String left = "";
+        String right = "";
+        for(int index = 1; index < s.length(); index++) {
+            left = s.substring(0, index);
+            right = s.substring(index);
+            
+            if(goal.contains(left) == true && goal.contains(right) == true)
+                return true;
+        }
+
+        return false;
+    }
+}
