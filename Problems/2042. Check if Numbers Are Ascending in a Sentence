@@ -1,0 +1,25 @@
+class Solution {
+    public boolean areNumbersAscending(String s) {
+        
+        int init = Integer.MIN_VALUE, num = 0, n = s.length();
+
+        for(int i=0; i < n; i++) {
+            if(s.charAt(i) >= '0' && s.charAt(i) <= '9') {
+                num = num * 10 + (s.charAt(i) - '0');
+            } else if(s.charAt(i) == ' ' && num != 0) {
+                if(init == Integer.MIN_VALUE){
+                    init = num;
+                    num = 0;
+                } else if(init < num) {
+                    init = num;
+                    num = 0;
+                } else if(init >= num)
+                    return false;
+            }
+        }
+        if(init >= num && num != 0)
+            return false;
+
+        return true;
+    }
+}
