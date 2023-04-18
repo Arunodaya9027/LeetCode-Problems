@@ -1,0 +1,25 @@
+class Solution {
+    public int[] minOperations(String boxes) {
+        
+        int[] res = new int[boxes.length()];
+        for(int i=0; i<boxes.length(); i++) {
+            res[i] = forBox(boxes, i, boxes.length());
+        }
+
+        return res;
+    }
+
+    public int forBox(String boxes, int curr, int len) {
+        int sum = 0;
+        for(int i=0; i<len; i++) {
+            if(boxes.charAt(i) == '1') {
+                if(curr < i)
+                    sum += i-curr;
+                else
+                    sum += curr-i;
+            }
+        }
+
+        return sum;
+    }
+}
