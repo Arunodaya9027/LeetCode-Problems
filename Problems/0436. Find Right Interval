@@ -1,0 +1,23 @@
+class Solution {
+    public int[] findRightInterval(int[][] intervals) {
+        int len = intervals.length;
+        if(len == 1)
+            return new int[]{-1};
+
+        int[] ans = new int[len];
+
+        for(int i=0; i<len; i++) {
+            int last = Integer.MAX_VALUE;
+            ans[i] = -1;
+            for(int j=0; j<len; j++) {
+                int diff = intervals[j][0] - intervals[i][1];
+                if(diff < last && diff >= 0) {
+                    ans[i] = j;
+                    last = diff;
+                }
+            }
+        }
+
+        return ans;
+    }
+}
