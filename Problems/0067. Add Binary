@@ -1,0 +1,86 @@
+class Solution {
+    public String addBinary(String a, String b) {
+        
+        String ans = "";
+        char carry = '0';
+        int lenA = a.length(), lenB = b.length();
+        int loop = lenA, max = lenB;
+        int flag = 0;
+        if(lenA > lenB) {
+            loop = lenB;
+            max = lenA;
+            flag = 1;
+        }
+
+        for(int i=1; i<=loop; i++) {
+            if(a.charAt(lenA-i) == '0') {
+                if(carry == '0')
+                    ans = b.charAt(lenB - i) + ans;
+                else if(carry == '1') {
+                    if(b.charAt(lenB - i) == '0') {
+                        ans = '1' + ans;
+                        carry = '0';
+                    } else {
+                        ans = '0' + ans;
+                    }
+                }
+            } else if(b.charAt(lenB-i) == '0') {
+                if(carry == '0')
+                    ans = a.charAt(lenA - i) + ans;
+                else if(carry == '1') {
+                    if(a.charAt(lenA - i) == '0') {
+                        ans = '1' + ans;
+                        carry = '0';
+                    } else {
+                        ans = '0' + ans;
+                    }
+                }
+            } else if(a.charAt(lenA-i) == '1' && b.charAt(lenB-i) == '1') {
+                if(carry == '0')
+                    ans = '0' + ans;
+                else
+                    ans = '1' + ans;
+                carry = '1';
+            }
+        }
+
+        if(loop != max) {
+            if(carry == '1') {
+                for(int i=loop+1; i<=max; i++) {
+                    if(flag == 1) {
+                        if(a.charAt(lenA-i) == '0') {
+                            ans = carry + ans;
+                            carry = '0';
+                        } else {
+                            ans = '0' + ans;
+                        }
+                    } else {
+                        if(b.charAt(lenB-i) == '0') {
+                            ans = carry + ans;
+                            carry = '0';
+                        } else {
+                            ans = '0' + ans;
+                        }
+                    }
+
+                    if(carry == '0') {
+                        loop = i;
+                        break;
+                    }
+                }
+            }
+            if(carry == '0') {
+                if(flag == 1)
+                   ans = a.substring(0, lenA-loop) + ans;
+                else
+                    ans = b.substring(0, lenB-loop) + ans;
+            }
+            
+        }
+
+        if(carry == '1')
+            ans = '1' + ans;
+        
+        return ans;
+    }
+}
