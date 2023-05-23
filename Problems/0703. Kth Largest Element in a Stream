@@ -1,0 +1,24 @@
+class KthLargest {
+
+    ArrayList<Integer> stream = new ArrayList<Integer>();
+    int index = 0;
+    //int max = Integer.MIN_VALUE;
+    public KthLargest(int k, int[] nums) {
+        index = k;
+        for(int i=0; i<nums.length; i++) {
+            stream.add(nums[i]);
+        }
+    }
+    
+    public int add(int val) {
+        stream.add(val);
+        Collections.sort(stream);
+        return stream.get(stream.size() - index);
+    }
+}
+
+/**
+ * Your KthLargest object will be instantiated and called as such:
+ * KthLargest obj = new KthLargest(k, nums);
+ * int param_1 = obj.add(val);
+ */
