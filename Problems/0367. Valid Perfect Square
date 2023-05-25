@@ -1,0 +1,19 @@
+class Solution {
+    public boolean isPerfectSquare(int num) {
+        
+        long down = 0;
+        long up = num;
+
+        while (down <= up) {
+            long mid = down + (up - down) / 2;
+            long temp = mid * mid;
+            if (temp == num) 
+                return true;
+            else if (temp < num) 
+                down = mid + 1;
+            else
+                up = mid - 1;
+        }
+        return false;
+    }
+}
